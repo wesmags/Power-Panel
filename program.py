@@ -1,3 +1,11 @@
+import subprocess
+from googlesearch import search
+import json
+import webbrowser
+
+from os import system, name
+from time import sleep
+
 
 top_token = ":"
 sub_token_1 = "-" + top_token
@@ -17,7 +25,10 @@ class Program:
         
 
 
-power_tools = Program("Windows Power Tools", 0.1)
+power_tools = Program("Windows Power Panel", 0.1)
+
+def check_input(_dict, _input):
+    _dict[_input]()
 
 def test():
     print("test")
@@ -42,15 +53,41 @@ def program():
 
 def info():
     power_tools.log_info()
+    
+def docs():
+    docs_sub = input(sub_token_1)
+    webbrowser.open(docs_query[docs_sub]);
+    
+def google():
+    google_sub = input(sub_token_1)
+    google_commands[google_sub]()
+
+def results():
+    results = input(sub_token_2)
+    for res in search(results, tld="co.in", num=10, stop=10, pause=2):
+                print(sub_token_2 + res)
+
 
 commands = {
     # Dict full of accessers for comamnds - command : "command_call"
     'help' : help,
 	'test' : test,
-    'program' : program
+    'program' : program,
+    'cls' : clear,
+    'docs' : docs,
+    'google' : google
     
 }
 
 program_commands = {
     'info' : info
+}
+
+docs_query = {
+    'python' : "https://docs.python.org/3/",
+    'power panel' : "https://github.com/wesmags/Power-Panel/wiki"
+}
+
+google_commands = {
+    'results' : results
 }
