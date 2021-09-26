@@ -1,3 +1,9 @@
+
+top_token = ":"
+sub_token_1 = "-" + top_token
+sub_token_2 = " $" + top_token
+
+
 class Program:
     def __init__(self, title, ver):
         self.title = title
@@ -10,6 +16,8 @@ class Program:
         print("Program Version: " + str(self.ver))
         
 
+
+power_tools = Program("Windows Power Tools", 0.1)
 
 def test():
     print("test")
@@ -28,15 +36,19 @@ def clear():
 
 
 def program():
-    pro_sub = input()
+    pro_sub = input(sub_token_1)
+    program_commands[pro_sub]()
 
 
 def info():
+    power_tools.log_info()
 
 commands = {
     # Dict full of accessers for comamnds - command : "command_call"
     'help' : help,
-	'test' : test
+	'test' : test,
+    'program' : program
+    
 }
 
 program_commands = {

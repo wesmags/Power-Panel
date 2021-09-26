@@ -6,9 +6,7 @@ python "%~f0" %*
 pause
 '''
 
-top_token = ":"
-sub_token_1 = "-" + top_token
-sub_token_2 = " $" + top_token
+
 
 from program import * 
 import subprocess
@@ -19,9 +17,6 @@ import webbrowser
 from os import system, name
 from time import sleep
   
-
-
-power_tools = Program("Windows Power Tools", 0.1)
 
 
 
@@ -57,8 +52,10 @@ while running:
         
     #else:
     #    print("Error: Command Not Recognized")
-    
+
+
+
 while sandbox:
 	cmd_line = input(top_token)
-	commands[cmd_line]()
+	commands.get(cmd_line, lambda: 'Invalid')()
 
