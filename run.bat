@@ -17,12 +17,8 @@ from time import sleep
 
 running = True
 
-welcome_info = "Welcome to Power Panel"
-
-
-print(welcome_info)
-sleep(2)
-clear()
+welcome_info = "Welcome to Power Panel - " + str(power_tools.ver)
+cmd_msg(welcome_info)
 
 while running:
 	cmd_line = input(top_token)
