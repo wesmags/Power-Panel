@@ -67,7 +67,43 @@ def results():
     for res in search(results, tld="co.in", num=10, stop=10, pause=2):
                 print(sub_token_2 + res)
 
+def editor():
+    editor_sub = input(sub_token_1)
+    text_commands[editor_sub]()
 
+def append():
+    editor_mode = True
+    filename = input("File Title: ")
+    f = open(filename, "a")
+    while editor_mode:
+        text = input("          ;")
+        if text != "$EXIT":
+            f.write(text + "\n")
+        else:
+            f.close()
+            editor_mode = False
+            break
+            
+def overwrite():
+    editor_mode = True
+    filename = input("File Title: ")
+    f = open(filename, "w")
+    while editor_mode:
+        text = input("          ;")
+        if text != "$EXIT":
+            f.write(text + "\n")
+        else:
+            f.close()
+            editor_mode = False
+            break
+        
+        
+
+def read():
+    filename = input("File Title: ")
+    f = open(filename, "r")
+    print(f.read())
+    
 commands = {
     # Dict full of accessers for comamnds - command : "command_call"
     'help' : help,
@@ -75,7 +111,8 @@ commands = {
     'program' : program,
     'cls' : clear,
     'docs' : docs,
-    'google' : google
+    'google' : google,
+    'editor' : editor
     
 }
 
@@ -90,4 +127,10 @@ docs_query = {
 
 google_commands = {
     'results' : results
+}
+
+text_commands = {
+    'a' : append,
+    'r' : read,
+    'o' : overwrite
 }
