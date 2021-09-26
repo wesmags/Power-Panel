@@ -9,6 +9,10 @@ import os
 import glob
 
 
+
+# Find docs on curses and get it installing properly, use it for making a proper text editor in command line 
+import curses
+
 top_token = ":"
 sub_token_1 = "-" + top_token
 sub_token_2 = " $" + top_token
@@ -90,6 +94,17 @@ def results():
 def editor():
     editor_sub = input(sub_token_1)
     text_commands[editor_sub]()
+
+# Opens Editor in New Window
+#def editor():
+#    os.chdir("directory")
+#    os.startfile("editor.bat")
+
+def editor():
+    workdr = r"C:\Users\Wes Mags\Documents\Projects\Power Tools"
+    filedir = r"\editor.bat"
+    fulldr = workdr + filedir
+    subprocess.call(fulldr)
 
 def append():
     editor_mode = True
